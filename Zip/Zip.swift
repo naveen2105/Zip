@@ -278,7 +278,7 @@ public class Zip {
      
      - notes: Supports implicit progress composition
      */
-    public class func zipFiles(paths: [URL], zipFilePath: URL, password: String?, compression: ZipCompression = .DefaultCompression, progress: ((_ progress: Double) -> ())?) throws {
+    public class func zipFiles(paths: [URL], zipFilePath: URL, key: String?, compression: ZipCompression = .DefaultCompression, progress: ((_ progress: Double) -> ())?) throws {
         
         // File manager
         let fileManager = FileManager.default
@@ -343,7 +343,7 @@ public class Zip {
                 }
                 catch {}
                 let buffer = malloc(chunkSize)
-                if let password = password, let fileName = fileName {
+                if let password = key, let fileName = fileName {
                     zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, compression.minizipCompression, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password, 0)
                 }
                 else if let fileName = fileName {

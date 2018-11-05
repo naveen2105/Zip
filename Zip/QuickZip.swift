@@ -104,7 +104,7 @@ extension Zip {
         let fileManager = FileManager.default
         let documentsUrl = fileManager.urls(for: self.searchPathDirectory(), in: .userDomainMask)[0] as URL
         let destinationUrl = documentsUrl.appendingPathComponent("\(fileName).zip")
-        try self.zipFiles(paths: paths, zipFilePath: destinationUrl, password: nil, progress: progress)
+        try self.zipFiles(paths: paths, zipFilePath: destinationUrl, key: nil, progress: progress)
         return destinationUrl
     }
     
